@@ -8,6 +8,7 @@ import com.food.ordering.system.order.service.domain.dto.create.CreateOrderComma
 import com.food.ordering.system.order.service.domain.dto.create.CreateOrderResponse;
 import com.food.ordering.system.order.service.domain.event.OrderCreatedEvent;
 import com.food.ordering.system.order.service.domain.mapper.OrderDataMapper;
+import com.food.ordering.system.order.service.domain.ports.output.message.publisher.payment.OrderCreatedPaymentRequestMessagePublisher;
 
 @Component
 public class OrderCreateCommandHandler {
@@ -15,35 +16,25 @@ public class OrderCreateCommandHandler {
 	private static final Logger LOGGER = LoggerFactory.getLogger(OrderCreateCommandHandler.class);
 
     private final OrderCreateHelper orderCreateHelper;
+
     private final OrderDataMapper orderDataMapper;
-//    private final PaymentOutboxHelper paymentOutboxHelper;
-//    private final OrderSagaHelper orderSagaHelper;
 
-    public OrderCreateCommandHandler(OrderCreateHelper orderCreateHelper,
-                                     OrderDataMapper orderDataMapper) {
-//                                     PaymentOutboxHelper paymentOutboxHelper,
-//                                     OrderSagaHelper orderSagaHelper) {
-        this.orderCreateHelper = orderCreateHelper;
-        this.orderDataMapper = orderDataMapper;
-//        this.paymentOutboxHelper = paymentOutboxHelper;
-//        this.orderSagaHelper = orderSagaHelper;
-    }
+    private final OrderCreatedPaymentRequestMessagePublisher orderCreatedPaymentRequestMessagePublisher;
 
-    public CreateOrderResponse createOrder(CreateOrderCommand createOrderCommand) {
+	public OrderCreateCommandHandler(OrderCreateHelper orderCreateHelper, 
+			OrderDataMapper orderDataMapper,
+			OrderCreatedPaymentRequestMessagePublisher paymentRequestMessagePublisher) {
+		this.orderCreateHelper = orderCreateHelper;
+		this.orderDataMapper = orderDataMapper;
+		orderCreatedPaymentRequestMessagePublisher = paymentRequestMessagePublisher;
+	}
+
+
+	public CreateOrderResponse createOrder(CreateOrderCommand createOrderCommand) {
         OrderCreatedEvent orderCreatedEvent = orderCreateHelper.persistOrder(createOrderCommand);
         LOGGER.info("Order is created with id: {}", orderCreatedEvent.getOrder().getId().getValue());
-        CreateOrderResponse createOrderResponse = orderDataMapper.orderToCreateOrderResponse(orderCreatedEvent.getOrder(),
-                "Order created successfully");
+        orderCreatedPaymentRequestMessagePublisher.publish(orderCreatedEvent);
 
-//        paymentOutboxHelper.savePaymentOutboxMessage(orderDataMapper
-//                .orderCreatedEventToOrderPaymentEventPayload(orderCreatedEvent),
-//                orderCreatedEvent.getOrder().getOrderStatus(),
-//                orderSagaHelper.orderStatusToSagaStatus(orderCreatedEvent.getOrder().getOrderStatus()),
-//                OutboxStatus.STARTED,
-//                UUID.randomUUID());
-
-        LOGGER.info("Returning CreateOrderResponse with order id: {}", orderCreatedEvent.getOrder().getId());
-
-        return createOrderResponse;
+        return orderDataMapper.orderToCreateOrderResponse(orderCreatedEvent.getOrder());
     }
 }

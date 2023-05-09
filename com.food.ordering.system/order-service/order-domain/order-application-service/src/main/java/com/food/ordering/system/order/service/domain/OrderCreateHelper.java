@@ -53,7 +53,7 @@ public class OrderCreateHelper {
         Order order = orderDataMapper.createOrderCommandToOrder(createOrderCommand);
         OrderCreatedEvent orderCreatedEvent = orderDomainService.validateAndInitiateOrder(order, restaurant);
         saveOrder(order);
-        LOGGER.info("Order is created with id: {}", orderCreatedEvent.getOrder().getId().getValue());
+        LOGGER.info("Order is created with id : {}", orderCreatedEvent.getOrder().getId().getValue());
         return orderCreatedEvent;
     }
 
