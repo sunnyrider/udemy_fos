@@ -15,26 +15,24 @@ public class OrderCreateCommandHandler {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(OrderCreateCommandHandler.class);
 
-    private final OrderCreateHelper orderCreateHelper;
+	private final OrderCreateHelper orderCreateHelper;
 
-    private final OrderDataMapper orderDataMapper;
+	private final OrderDataMapper orderDataMapper;
 
-    private final OrderCreatedPaymentRequestMessagePublisher orderCreatedPaymentRequestMessagePublisher;
+	private final OrderCreatedPaymentRequestMessagePublisher orderCreatedPaymentRequestMessagePublisher;
 
-	public OrderCreateCommandHandler(OrderCreateHelper orderCreateHelper, 
-			OrderDataMapper orderDataMapper,
+	public OrderCreateCommandHandler(OrderCreateHelper orderCreateHelper, OrderDataMapper orderDataMapper,
 			OrderCreatedPaymentRequestMessagePublisher paymentRequestMessagePublisher) {
 		this.orderCreateHelper = orderCreateHelper;
 		this.orderDataMapper = orderDataMapper;
 		orderCreatedPaymentRequestMessagePublisher = paymentRequestMessagePublisher;
 	}
 
-
 	public CreateOrderResponse createOrder(CreateOrderCommand createOrderCommand) {
-        OrderCreatedEvent orderCreatedEvent = orderCreateHelper.persistOrder(createOrderCommand);
-        LOGGER.info("Order is created with id: {}", orderCreatedEvent.getOrder().getId().getValue());
-        orderCreatedPaymentRequestMessagePublisher.publish(orderCreatedEvent);
+		OrderCreatedEvent orderCreatedEvent = orderCreateHelper.persistOrder(createOrderCommand);
+		LOGGER.info("Order is created with id: {}", orderCreatedEvent.getOrder().getId().getValue());
+		orderCreatedPaymentRequestMessagePublisher.publish(orderCreatedEvent);
 
-        return orderDataMapper.orderToCreateOrderResponse(orderCreatedEvent.getOrder());
-    }
+		return orderDataMapper.orderToCreateOrderResponse(orderCreatedEvent.getOrder());
+	}
 }
