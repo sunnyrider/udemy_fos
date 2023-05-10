@@ -5,9 +5,9 @@ import java.time.Instant;
 import java.util.Collections;
 import java.util.List;
 
-import com.food.ordering.system.domain.valueobject.PaymentStatus;
+import javax.annotation.Generated;
 
-import jakarta.annotation.Generated;
+import com.food.ordering.system.domain.valueobject.PaymentStatus;
 
 public class PaymentResponse {
 

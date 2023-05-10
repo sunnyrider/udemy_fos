@@ -4,9 +4,9 @@ import java.time.Instant;
 import java.util.Collections;
 import java.util.List;
 
-import com.food.ordering.system.domain.valueobject.OrderApprovalStatus;
+import javax.annotation.Generated;
 
-import jakarta.annotation.Generated;
+import com.food.ordering.system.domain.valueobject.OrderApprovalStatus;
 
 public class RestaurantApprovalResponse {
 

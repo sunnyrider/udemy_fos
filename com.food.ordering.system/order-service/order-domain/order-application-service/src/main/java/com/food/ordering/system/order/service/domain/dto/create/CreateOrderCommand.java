@@ -5,8 +5,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
-import jakarta.annotation.Generated;
-import jakarta.validation.constraints.NotNull;
+import javax.annotation.Generated;
+import javax.validation.constraints.NotNull;
 
 public class CreateOrderCommand {
 
@@ -25,50 +25,6 @@ public class CreateOrderCommand {
 	@NotNull
 	private final OrderAddress address;
 
-	@Generated("SparkTools")
-	public static final class Builder {
-		private UUID customerId;
-		private UUID restaurantId;
-		private BigDecimal price;
-		private List<OrderItem> items = Collections.emptyList();
-		private OrderAddress address;
-
-		private Builder() {
-		}
-
-		public CreateOrderCommand build() {
-			return new CreateOrderCommand(this);
-		}
-
-		public Builder withAddress(OrderAddress address) {
-			this.address = address;
-			return this;
-		}
-
-		public Builder withCustomerId(UUID customerId) {
-			this.customerId = customerId;
-			return this;
-		}
-
-		public Builder withItems(List<OrderItem> items) {
-			this.items = items;
-			return this;
-		}
-
-		public Builder withPrice(BigDecimal price) {
-			this.price = price;
-			return this;
-		}
-
-		public Builder withRestaurantId(UUID restaurantId) {
-			this.restaurantId = restaurantId;
-			return this;
-		}
-	}
-	@Generated("SparkTools")
-	public static Builder builder() {
-		return new Builder();
-	}
 
 	@Generated("SparkTools")
 	private CreateOrderCommand(Builder builder) {
@@ -78,6 +34,7 @@ public class CreateOrderCommand {
 		this.items = builder.items;
 		this.address = builder.address;
 	}
+
 
 	public CreateOrderCommand(@NotNull UUID customerId, @NotNull UUID restaurantId, @NotNull BigDecimal price,
 			@NotNull List<OrderItem> items, @NotNull OrderAddress address) {
@@ -103,5 +60,49 @@ public class CreateOrderCommand {
 	}
 	public UUID getRestaurantId() {
 		return restaurantId;
+	}
+	@Generated("SparkTools")
+	public static Builder builder() {
+		return new Builder();
+	}
+	@Generated("SparkTools")
+	public static final class Builder {
+		private UUID customerId;
+		private UUID restaurantId;
+		private BigDecimal price;
+		private List<OrderItem> items = Collections.emptyList();
+		private OrderAddress address;
+
+		private Builder() {
+		}
+
+		public Builder withCustomerId(UUID customerId) {
+			this.customerId = customerId;
+			return this;
+		}
+
+		public Builder withRestaurantId(UUID restaurantId) {
+			this.restaurantId = restaurantId;
+			return this;
+		}
+
+		public Builder withPrice(BigDecimal price) {
+			this.price = price;
+			return this;
+		}
+
+		public Builder withItems(List<OrderItem> items) {
+			this.items = items;
+			return this;
+		}
+
+		public Builder withAddress(OrderAddress address) {
+			this.address = address;
+			return this;
+		}
+
+		public CreateOrderCommand build() {
+			return new CreateOrderCommand(this);
+		}
 	}
 }
