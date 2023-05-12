@@ -9,17 +9,16 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties(prefix = "kafka-config")
 public class KafkaConfigData {
 
-    private String bootstrapServers;
-    private String schemaRegistryUrlKey;
-    private String schemaRegistryUrl;
-    private Integer numOfPartitions;
-    private Short replicationFactor;
+	private String bootstrapServers;
+	private String schemaRegistryUrlKey;
+	private String schemaRegistryUrl;
+	private Integer numOfPartitions;
+	private Short replicationFactor;
 
-    public KafkaConfigData() {
-    	
-    }
+	public KafkaConfigData() {
+	}
 
-    public KafkaConfigData(String bootstrapServers, String schemaRegistryUrlKey, String schemaRegistryUrl,
+	public KafkaConfigData(String bootstrapServers, String schemaRegistryUrlKey, String schemaRegistryUrl,
 			Integer numOfPartitions, Short replicationFactor) {
 		super();
 		this.bootstrapServers = bootstrapServers;
@@ -29,7 +28,7 @@ public class KafkaConfigData {
 		this.replicationFactor = replicationFactor;
 	}
 
-    @Override
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -56,32 +55,41 @@ public class KafkaConfigData {
 	public Short getReplicationFactor() {
 		return replicationFactor;
 	}
+
 	public String getSchemaRegistryUrl() {
 		return schemaRegistryUrl;
 	}
+
 	public String getSchemaRegistryUrlKey() {
 		return schemaRegistryUrlKey;
 	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(bootstrapServers, numOfPartitions, replicationFactor, schemaRegistryUrl,
 				schemaRegistryUrlKey);
 	}
+
 	public void setBootstrapServers(String bootstrapServers) {
 		this.bootstrapServers = bootstrapServers;
 	}
+
 	public void setNumOfPartitions(Integer numOfPartitions) {
 		this.numOfPartitions = numOfPartitions;
 	}
+
 	public void setReplicationFactor(Short replicationFactor) {
 		this.replicationFactor = replicationFactor;
 	}
+
 	public void setSchemaRegistryUrl(String schemaRegistryUrl) {
 		this.schemaRegistryUrl = schemaRegistryUrl;
 	}
+
 	public void setSchemaRegistryUrlKey(String schemaRegistryUrlKey) {
 		this.schemaRegistryUrlKey = schemaRegistryUrlKey;
 	}
+
 	@Override
 	public String toString() {
 		return "KafkaConfigData [bootstrapServers=" + bootstrapServers + ", schemaRegistryUrlKey="
