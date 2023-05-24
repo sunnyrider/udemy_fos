@@ -1,7 +1,8 @@
 package com.food.ordering.system.application.handler;
 
 import java.util.Objects;
-import javax.annotation.Generated;
+
+import jakarta.annotation.Generated;
 
 public class ErrorDTO {
 

@@ -38,7 +38,6 @@ public class OrderCreateCommandHandler {
 	public OrderCreateCommandHandler(OrderDomainService orderDomainService, OrderRepository orderRepository,
 			CustomerRepository customerRepository, RestaurantRepository restaurantRepository,
 			OrderDataMapper orderDataMapper) {
-		super();
 		this.orderDomainService = orderDomainService;
 		this.orderRepository = orderRepository;
 		this.customerRepository = customerRepository;

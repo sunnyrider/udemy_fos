@@ -1,9 +1,13 @@
 package com.food.ordering.system.order.service.dataaccess.order.entity;
 
+import java.io.Serializable;
 import java.util.Objects;
-import javax.annotation.Generated;
 
-public class OrderItemEntityId {
+import jakarta.annotation.Generated;
+
+public class OrderItemEntityId implements Serializable {
+
+	private static final long serialVersionUID = -5020111959907446873L;
 
 	private Long id;
 	private OrderEntity order;

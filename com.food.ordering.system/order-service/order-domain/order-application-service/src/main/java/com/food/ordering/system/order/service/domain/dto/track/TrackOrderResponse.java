@@ -4,10 +4,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
-import javax.annotation.Generated;
-import javax.validation.constraints.NotNull;
-
 import com.food.ordering.system.domain.valueobject.OrderStatus;
+
+import jakarta.annotation.Generated;
+import jakarta.validation.constraints.NotNull;
 
 public class TrackOrderResponse {
 

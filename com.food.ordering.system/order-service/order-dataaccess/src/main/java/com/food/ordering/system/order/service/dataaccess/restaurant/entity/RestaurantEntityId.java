@@ -3,18 +3,19 @@ package com.food.ordering.system.order.service.dataaccess.restaurant.entity;
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
-import javax.annotation.Generated;
+
+import jakarta.annotation.Generated;
 
 public class RestaurantEntityId implements Serializable {
 	private static final long serialVersionUID = 5954657376519613783L;
 
 	private UUID restaurantId;
-	private UUID orderId;
+	private UUID productId;
 
 	@Generated("SparkTools")
 	private RestaurantEntityId(Builder builder) {
 		this.restaurantId = builder.restaurantId;
-		this.orderId = builder.orderId;
+		this.productId = builder.productId;
 	}
 
 	public RestaurantEntityId() {
@@ -22,7 +23,7 @@ public class RestaurantEntityId implements Serializable {
 
 	public RestaurantEntityId(UUID restaurantId, UUID orderId) {
 		this.restaurantId = restaurantId;
-		this.orderId = orderId;
+		this.productId = orderId;
 	}
 
 	public UUID getRestaurantId() {
@@ -33,17 +34,17 @@ public class RestaurantEntityId implements Serializable {
 		this.restaurantId = restaurantId;
 	}
 
-	public UUID getOrderId() {
-		return orderId;
+	public UUID getProductId() {
+		return productId;
 	}
 
-	public void setOrderId(UUID orderId) {
-		this.orderId = orderId;
+	public void setProductId(UUID orderId) {
+		this.productId = orderId;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(orderId, restaurantId);
+		return Objects.hash(productId, restaurantId);
 	}
 
 	@Override
@@ -55,12 +56,12 @@ public class RestaurantEntityId implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		RestaurantEntityId other = (RestaurantEntityId) obj;
-		return Objects.equals(orderId, other.orderId) && Objects.equals(restaurantId, other.restaurantId);
+		return Objects.equals(productId, other.productId) && Objects.equals(restaurantId, other.restaurantId);
 	}
 
 	@Override
 	public String toString() {
-		return "RestaurantEntityId [restaurantId=" + restaurantId + ", orderId=" + orderId + "]";
+		return "RestaurantEntityId [restaurantId=" + restaurantId + ", productId=" + productId + "]";
 	}
 
 	@Generated("SparkTools")
@@ -71,7 +72,7 @@ public class RestaurantEntityId implements Serializable {
 	@Generated("SparkTools")
 	public static final class Builder {
 		private UUID restaurantId;
-		private UUID orderId;
+		private UUID productId;
 
 		private Builder() {
 		}
@@ -81,8 +82,8 @@ public class RestaurantEntityId implements Serializable {
 			return this;
 		}
 
-		public Builder OrderId(UUID orderId) {
-			this.orderId = orderId;
+		public Builder ProductId(UUID val) {
+			this.productId = val;
 			return this;
 		}
 

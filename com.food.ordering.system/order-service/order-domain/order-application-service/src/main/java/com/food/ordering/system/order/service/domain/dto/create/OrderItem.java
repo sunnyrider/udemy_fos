@@ -3,8 +3,8 @@ package com.food.ordering.system.order.service.domain.dto.create;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-import javax.annotation.Generated;
-import javax.validation.constraints.NotNull;
+import jakarta.annotation.Generated;
+import jakarta.validation.constraints.NotNull;
 
 public class OrderItem {
 

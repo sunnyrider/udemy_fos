@@ -1,8 +1,8 @@
 package com.food.ordering.system.order.service.domain.dto.create;
 
-import javax.annotation.Generated;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.NotNull;
+import jakarta.annotation.Generated;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.NotNull;
 
 public class OrderAddress {
 

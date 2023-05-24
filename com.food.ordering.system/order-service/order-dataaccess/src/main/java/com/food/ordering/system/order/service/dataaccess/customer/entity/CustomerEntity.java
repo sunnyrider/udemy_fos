@@ -3,10 +3,10 @@ package com.food.ordering.system.order.service.dataaccess.customer.entity;
 import java.util.Objects;
 import java.util.UUID;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Table(name = "order_customer_m_view", schema = "customer")
 @Entity

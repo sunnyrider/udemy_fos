@@ -2,12 +2,15 @@ package com.food.ordering.system.order.service.dataaccess.order.apapter;
 
 import java.util.Optional;
 
+import org.springframework.stereotype.Component;
+
 import com.food.ordering.system.order.service.dataaccess.order.mapper.OrderDataAccessMapper;
 import com.food.ordering.system.order.service.dataaccess.order.repository.OrderJpaRepository;
 import com.food.ordering.system.order.service.domain.entity.Order;
 import com.food.ordering.system.order.service.domain.ports.output.repository.OrderRepository;
 import com.food.ordering.system.order.service.domain.valueobject.TrackingId;
 
+@Component
 public class OrderRepositoryImpl implements OrderRepository {
 
 	private final OrderJpaRepository orderJpaRepository;
