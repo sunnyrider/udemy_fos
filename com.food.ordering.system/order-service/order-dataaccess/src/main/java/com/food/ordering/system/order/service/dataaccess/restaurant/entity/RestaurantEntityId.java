@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
 
-import jakarta.annotation.Generated;
+import javax.annotation.Generated;
 
 public class RestaurantEntityId implements Serializable {
 	private static final long serialVersionUID = 5954657376519613783L;

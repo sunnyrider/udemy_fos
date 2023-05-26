@@ -3,7 +3,7 @@ package com.food.ordering.system.order.service.dataaccess.order.entity;
 import java.io.Serializable;
 import java.util.Objects;
 
-import jakarta.annotation.Generated;
+import javax.annotation.Generated;
 
 public class OrderItemEntityId implements Serializable {
 

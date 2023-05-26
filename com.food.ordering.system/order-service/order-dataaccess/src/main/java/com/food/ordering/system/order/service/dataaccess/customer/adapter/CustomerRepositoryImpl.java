@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Component;
 
+import com.food.ordering.system.order.service.dataaccess.customer.entity.CustomerEntity;
 import com.food.ordering.system.order.service.dataaccess.customer.mapper.CustomerDataAccessMapper;
 import com.food.ordering.system.order.service.dataaccess.customer.repository.CustomerJpaRepository;
 import com.food.ordering.system.order.service.domain.entity.Customer;
@@ -22,10 +23,10 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 		this.customerDataAccessMapper = customerDataAccessMapper;
 	}
 
-	@Override
-	public Optional<Customer> findCustomer(UUID customerId) {
-		return customerJpaRepository.findById(customerId)
-				.map(customerDataAccessMapper::customerEntityToCustomer);
-	}
+    @Override
+    public Optional<Customer> findCustomer(UUID customerId) {
+    	Optional<CustomerEntity> result = customerJpaRepository.findById(customerId);
+        return result.map(customerDataAccessMapper::customerEntityToCustomer);
+    }
 
 }

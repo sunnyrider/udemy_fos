@@ -1,9 +1,9 @@
 package com.food.ordering.system.order.service.domain.config;
 
+import javax.annotation.Generated;
+
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
-
-import jakarta.annotation.Generated;
 
 @Configuration
 @ConfigurationProperties(prefix = "order-service")

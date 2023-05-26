@@ -15,7 +15,7 @@ import org.springframework.util.concurrent.ListenableFutureCallback;
 import com.food.ordering.system.kafka.producer.exception.KafkaProducerException;
 import com.food.ordering.system.kafka.producer.service.KafkaProducer;
 
-import jakarta.annotation.PreDestroy;
+import javax.annotation.PreDestroy;
 
 @Component
 public class KafkaProducerImpl<K extends Serializable, V extends SpecificRecordBase> 

@@ -11,8 +11,6 @@ import com.food.ordering.system.order.service.domain.dto.track.TrackOrderQuery;
 import com.food.ordering.system.order.service.domain.dto.track.TrackOrderResponse;
 import com.food.ordering.system.order.service.domain.ports.input.service.OrderApplicationService;
 
-import jakarta.validation.Valid;
-
 @Validated
 @Service
 class OrderApplicationServiceImpl implements OrderApplicationService {
@@ -29,13 +27,29 @@ class OrderApplicationServiceImpl implements OrderApplicationService {
 		this.orderTrackCommandHandler = orderTrackCommandHandler;
 	}
 
+	/**
+	 * Spring.Boot Version 2.6.7
+	 */
 	@Override
-	public CreateOrderResponse createOrder(@Valid CreateOrderCommand createOrderCommand) {
+	public CreateOrderResponse createOrder(CreateOrderCommand createOrderCommand) {
 		return orderCreateCommandHandler.createOrder(createOrderCommand);
 	}
 
 	@Override
-	public TrackOrderResponse trackOrder(@Valid TrackOrderQuery trackOrderQuery) {
+	public TrackOrderResponse trackOrder(TrackOrderQuery trackOrderQuery) {
 		return orderTrackCommandHandler.trackOrder(trackOrderQuery);
 	}
+
+	/**
+	 * Spring.Boot Version 3.0.6
+	 */
+//	@Override
+//	public CreateOrderResponse createOrder(@Valid CreateOrderCommand createOrderCommand) {
+//		return orderCreateCommandHandler.createOrder(createOrderCommand);
+//	}
+//
+//	@Override
+//	public TrackOrderResponse trackOrder(@Valid TrackOrderQuery trackOrderQuery) {
+//		return orderTrackCommandHandler.trackOrder(trackOrderQuery);
+//	}
 }

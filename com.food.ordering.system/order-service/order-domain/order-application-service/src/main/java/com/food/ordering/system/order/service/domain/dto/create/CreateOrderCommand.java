@@ -5,8 +5,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
-import jakarta.annotation.Generated;
-import jakarta.validation.constraints.NotNull;
+import javax.annotation.Generated;
+import javax.validation.constraints.NotNull;
 
 public class CreateOrderCommand {
 
