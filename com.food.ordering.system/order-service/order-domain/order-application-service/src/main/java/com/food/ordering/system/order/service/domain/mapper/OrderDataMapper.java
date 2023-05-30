@@ -2,6 +2,7 @@ package com.food.ordering.system.order.service.domain.mapper;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
@@ -27,7 +28,7 @@ public class OrderDataMapper {
 				.withRestaurantId(new RestaurantId(createOrderCommand.getRestaurantId()))
 				.withProducts(createOrderCommand.getItems().stream()
 						.map(prod -> new Product(new ProductId(prod.getProductId())))
-						.toList()
+						.collect(Collectors.toList())
 				).build();
 	}
 
@@ -73,7 +74,7 @@ public class OrderDataMapper {
 						.withPrice(new Money(item.getPrice()))
 						.withQuantity(item.getQuantity())
 						.withSubTotal(new Money(item.getSubTotal()))
-					.build()).toList();
+					.build()).collect(Collectors.toList());
 	}
 
 	private StreetAddress orderAddressToStreetAddress(OrderAddress orderAddress) {

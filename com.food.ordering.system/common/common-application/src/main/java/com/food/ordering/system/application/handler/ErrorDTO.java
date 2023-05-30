@@ -16,7 +16,6 @@ public class ErrorDTO {
 	}
 
 	public ErrorDTO(String code, String message) {
-		super();
 		this.code = code;
 		this.message = message;
 	}
