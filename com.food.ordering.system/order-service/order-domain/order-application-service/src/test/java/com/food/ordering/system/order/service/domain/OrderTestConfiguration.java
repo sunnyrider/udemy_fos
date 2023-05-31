@@ -1,6 +1,10 @@
 package com.food.ordering.system.order.service.domain;
 
+import static org.mockito.Mockito.withSettings;
+
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
@@ -12,6 +16,7 @@ import com.food.ordering.system.order.service.domain.ports.output.repository.Ord
 import com.food.ordering.system.order.service.domain.ports.output.repository.RestaurantRepository;
 
 @SpringBootApplication(scanBasePackages = "com.food.ordering.system")
+@ExtendWith(MockitoExtension.class)
 public class OrderTestConfiguration {
 
 	@Bean
@@ -31,7 +36,7 @@ public class OrderTestConfiguration {
 
 	@Bean
 	public OrderRepository orderRepository() {
-		return Mockito.mock(OrderRepository.class);
+		return Mockito.mock(OrderRepository.class, withSettings());
 	}
 
 	@Bean

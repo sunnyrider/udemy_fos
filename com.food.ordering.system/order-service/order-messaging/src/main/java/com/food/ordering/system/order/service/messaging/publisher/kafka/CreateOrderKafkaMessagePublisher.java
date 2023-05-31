@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import com.food.ordering.system.kafka.order.avro.model.PaymentRequestAvroModel;
+import com.food.ordering.system.kafka.producer.KafkaMessageHelper;
 import com.food.ordering.system.kafka.producer.service.KafkaProducer;
 import com.food.ordering.system.order.service.domain.config.OrderServiceConfigData;
 import com.food.ordering.system.order.service.domain.event.OrderCreatedEvent;
@@ -18,12 +19,12 @@ public class CreateOrderKafkaMessagePublisher implements OrderCreatedPaymentRequ
 
 	private final OrderMessagingDataMapper orderMessagingDataMapper;
 	private final OrderServiceConfigData orderServiceConfigData;
-	private final OrderKafkaMessageHelper orderKafkaMessageHelper;
+	private final KafkaMessageHelper orderKafkaMessageHelper;
 	private final KafkaProducer<String, PaymentRequestAvroModel> kafkaProducer;
 
 	public CreateOrderKafkaMessagePublisher(OrderMessagingDataMapper orderMessagingDataMapper,
 			OrderServiceConfigData orderServiceConfigData,
-			OrderKafkaMessageHelper helper,
+			KafkaMessageHelper helper,
 			KafkaProducer<String, PaymentRequestAvroModel> kafkaProducer) {
 		this.orderMessagingDataMapper = orderMessagingDataMapper;
 		this.orderServiceConfigData = orderServiceConfigData;
