@@ -9,7 +9,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>restaurat-application-service</artifactId>
+	<artifactId>restaurant-application-service</artifactId>
 
 	<dependencies>
 		<dependency>

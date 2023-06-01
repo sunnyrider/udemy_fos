@@ -35,18 +35,6 @@ public class RestaurantApprovalRequest {
 		this.createdAt = builder.createdAt;
 	}
 
-    public RestaurantApprovalRequest(String id, String sagaId, String restaurantId, String orderId,
-			RestaurantOrderStatus restaurantOrderStatus, List<Product> products, BigDecimal price, Instant createdAt) {
-		this.id = id;
-		this.sagaId = sagaId;
-		this.restaurantId = restaurantId;
-		this.orderId = orderId;
-		this.restaurantOrderStatus = restaurantOrderStatus;
-		this.products = products;
-		this.price = price;
-		this.createdAt = createdAt;
-	}
-
 	public String getId() {
 		return id;
 	}

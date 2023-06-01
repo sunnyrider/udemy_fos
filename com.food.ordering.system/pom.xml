@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.food.ordering.system</groupId>
-	<artifactId>com.food.ordering.system</artifactId>
+	<artifactId>food-ordering-system</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>food-ordering-system</name>
 

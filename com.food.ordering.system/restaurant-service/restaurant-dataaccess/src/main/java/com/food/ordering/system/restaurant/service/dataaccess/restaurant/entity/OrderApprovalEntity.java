@@ -39,15 +39,8 @@ public class OrderApprovalEntity {
 		this.status = builder.status;
 	}
 
-    public OrderApprovalEntity() {
+	public OrderApprovalEntity() {
     }
-
-    public OrderApprovalEntity(UUID id, UUID restaurantId, UUID orderId, OrderApprovalStatus status) {
-		this.id = id;
-		this.restaurantId = restaurantId;
-		this.orderId = orderId;
-		this.status = status;
-	}
 
 	public UUID getId() {
 		return id;
@@ -120,5 +113,4 @@ public class OrderApprovalEntity {
 			return new OrderApprovalEntity(this);
 		}
 	}
-
 }

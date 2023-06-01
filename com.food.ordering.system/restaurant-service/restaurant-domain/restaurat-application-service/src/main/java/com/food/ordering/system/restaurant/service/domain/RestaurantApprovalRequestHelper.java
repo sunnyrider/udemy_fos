@@ -16,7 +16,7 @@ import com.food.ordering.system.restaurant.service.domain.entity.Restaurant;
 import com.food.ordering.system.restaurant.service.domain.event.OrderApprovalEvent;
 import com.food.ordering.system.restaurant.service.domain.exception.RestaurantNotFoundException;
 import com.food.ordering.system.restaurant.service.domain.mapper.RestaurantDataMapper;
-import com.food.ordering.system.restaurant.service.domain.ports.output.message.publisher.OrderApprovalMessagePublisher;
+import com.food.ordering.system.restaurant.service.domain.ports.output.message.publisher.OrderApprovedMessagePublisher;
 import com.food.ordering.system.restaurant.service.domain.ports.output.message.publisher.OrderRejectedMessagePublisher;
 import com.food.ordering.system.restaurant.service.domain.ports.output.repository.OrderApprovalRepository;
 import com.food.ordering.system.restaurant.service.domain.ports.output.repository.RestaurantRepository;
@@ -30,7 +30,7 @@ public class RestaurantApprovalRequestHelper {
 	private final RestaurantDataMapper restaurantDataMapper;
 	private final RestaurantRepository restaurantRepository;
 	private final OrderApprovalRepository orderApprovalRepository;
-	private final OrderApprovalMessagePublisher orderApprovalMessagePublisher;
+	private final OrderApprovedMessagePublisher orderApprovalMessagePublisher;
 	private final OrderRejectedMessagePublisher orderRejectedMessagePublisher;
 
 	public RestaurantApprovalRequestHelper(RestaurantDomainService restaurantDomainService,
@@ -38,7 +38,7 @@ public class RestaurantApprovalRequestHelper {
 			RestaurantRepository restaurantRepository,
 			OrderApprovalRepository orderApprovalRepository, 
 			OrderRejectedMessagePublisher orderRejectedMessagePublisher, 
-			OrderApprovalMessagePublisher orderApprovalMessagePublisher) {
+			OrderApprovedMessagePublisher orderApprovalMessagePublisher) {
 		this.restaurantDomainService = restaurantDomainService;
 		this.restaurantDataMapper = restaurantDataMapper;
 		this.restaurantRepository = restaurantRepository;

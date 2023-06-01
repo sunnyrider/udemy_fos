@@ -13,7 +13,7 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>restaurat-application-service</module>
 		<module>restaurant-domain-core</module>
+		<module>restaurat-application-service</module>
 	</modules>
 </project>
