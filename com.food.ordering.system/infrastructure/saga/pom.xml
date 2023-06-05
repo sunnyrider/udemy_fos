@@ -5,15 +5,17 @@
 
 	<parent>
 		<groupId>com.food.ordering.system</groupId>
-		<artifactId>food-ordering-system</artifactId>
+		<artifactId>infrastructure</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>infrastructure</artifactId>
-	<packaging>pom</packaging>
+	<artifactId>saga</artifactId>
 
-	<modules>
-		<module>kafka</module>
-		<module>saga</module>
-	</modules>
+	<dependencies>
+		<dependency>
+			<groupId>com.food.ordering.system</groupId>
+			<artifactId>common-domain</artifactId>
+		</dependency>
+	</dependencies>
+
 </project>
