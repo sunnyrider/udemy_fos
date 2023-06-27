@@ -30,7 +30,7 @@ public class Money {
 		return new Money(setScale(amount.subtract(money.getAmount())));
 	}
 
-	public Money multipy(int multiplier) {
+	public Money multiply(int multiplier) {
 		return new Money(setScale(amount.multiply(BigDecimal.valueOf(multiplier))));
 	}
 

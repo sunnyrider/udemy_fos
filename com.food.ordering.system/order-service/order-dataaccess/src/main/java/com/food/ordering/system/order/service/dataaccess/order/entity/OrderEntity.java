@@ -56,20 +56,6 @@ public class OrderEntity {
 	public OrderEntity() {
 	}
 
-	public OrderEntity(UUID id, UUID customerId, UUID restaurantId, UUID trackingId, BigDecimal price,
-			OrderStatus orderStatus, String failureMessages, OrderAddressEntity address, List<OrderItemEntity> items) {
-		super();
-		this.id = id;
-		this.customerId = customerId;
-		this.restaurantId = restaurantId;
-		this.trackingId = trackingId;
-		this.price = price;
-		this.orderStatus = orderStatus;
-		this.failureMessages = failureMessages;
-		this.address = address;
-		this.items = items;
-	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -186,48 +172,53 @@ public class OrderEntity {
 		private Builder() {
 		}
 
-		public Builder Id(UUID id) {
+		public Builder id(UUID id) {
 			this.id = id;
 			return this;
 		}
 
-		public Builder CustomerId(UUID customerId) {
+		public Builder customerId(UUID customerId) {
 			this.customerId = customerId;
 			return this;
 		}
 
-		public Builder RestaurantId(UUID restaurantId) {
+		public Builder restaurantId(UUID restaurantId) {
 			this.restaurantId = restaurantId;
+			return this;
+		}
+
+		public Builder trackingId(UUID trackingId) {
+			this.trackingId = trackingId;
+			return this;
+		}
+
+		public Builder price(BigDecimal price) {
+			this.price = price;
+			return this;
+		}
+
+		public Builder orderStatus(OrderStatus orderStatus) {
+			this.orderStatus = orderStatus;
+			return this;
+		}
+
+		public Builder failureMessages(String failureMessages) {
+			this.failureMessages = failureMessages;
+			return this;
+		}
+
+		public Builder address(OrderAddressEntity address) {
+			this.address = address;
+			return this;
+		}
+
+		public Builder items(List<OrderItemEntity> items) {
+			this.items = items;
 			return this;
 		}
 
 		public Builder TrackingId(UUID vNewVal) {
 			trackingId = vNewVal;
-			return this;
-		}
-
-		public Builder Price(BigDecimal price) {
-			this.price = price;
-			return this;
-		}
-
-		public Builder OrderStatus(OrderStatus orderStatus) {
-			this.orderStatus = orderStatus;
-			return this;
-		}
-
-		public Builder FailureMessages(String failureMessages) {
-			this.failureMessages = failureMessages;
-			return this;
-		}
-
-		public Builder Address(OrderAddressEntity address) {
-			this.address = address;
-			return this;
-		}
-
-		public Builder Items(List<OrderItemEntity> items) {
-			this.items = items;
 			return this;
 		}
 

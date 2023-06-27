@@ -29,18 +29,6 @@ public class RestaurantApprovalResponse {
 		this.failureMessages = builder.failureMessages;
 	}
 
-	public RestaurantApprovalResponse(String id, String sagaId, String orderId, String restaurantId, Instant createdAt,
-			OrderApprovalStatus orderApprovalStatus, List<String> failureMessages) {
-		super();
-		this.id = id;
-		this.sagaId = sagaId;
-		this.orderId = orderId;
-		this.restaurantId = restaurantId;
-		this.createdAt = createdAt;
-		this.orderApprovalStatus = orderApprovalStatus;
-		this.failureMessages = failureMessages;
-	}
-
 	public Instant getCreatedAt() {
 		return createdAt;
 	}
@@ -80,37 +68,37 @@ public class RestaurantApprovalResponse {
 		private Builder() {
 		}
 
-		public Builder withId(String id) {
+		public Builder id(String id) {
 			this.id = id;
 			return this;
 		}
 
-		public Builder withSagaId(String sagaId) {
+		public Builder sagaId(String sagaId) {
 			this.sagaId = sagaId;
 			return this;
 		}
 
-		public Builder withOrderId(String orderId) {
+		public Builder orderId(String orderId) {
 			this.orderId = orderId;
 			return this;
 		}
 
-		public Builder withRestaurantId(String restaurantId) {
+		public Builder restaurantId(String restaurantId) {
 			this.restaurantId = restaurantId;
 			return this;
 		}
 
-		public Builder withCreatedAt(Instant createdAt) {
+		public Builder createdAt(Instant createdAt) {
 			this.createdAt = createdAt;
 			return this;
 		}
 
-		public Builder withOrderApprovalStatus(OrderApprovalStatus orderApprovalStatus) {
+		public Builder orderApprovalStatus(OrderApprovalStatus orderApprovalStatus) {
 			this.orderApprovalStatus = orderApprovalStatus;
 			return this;
 		}
 
-		public Builder withFailureMessages(List<String> failureMessages) {
+		public Builder failureMessages(List<String> failureMessages) {
 			this.failureMessages = failureMessages;
 			return this;
 		}

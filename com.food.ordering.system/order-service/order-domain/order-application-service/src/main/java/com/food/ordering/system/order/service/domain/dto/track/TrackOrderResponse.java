@@ -10,15 +10,11 @@ import javax.validation.constraints.NotNull;
 import com.food.ordering.system.domain.valueobject.OrderStatus;
 
 public class TrackOrderResponse {
-
-	@NotNull
-	private final UUID orderTrackingId;
-
-	@NotNull
-	private final OrderStatus orderStatus;
-
-	@NotNull
-	private final List<String> failureMessages;
+    @NotNull
+    private final UUID orderTrackingId;
+    @NotNull
+    private final OrderStatus orderStatus;
+    private final List<String> failureMessages;
 
 	@Generated("SparkTools")
 	private TrackOrderResponse(Builder builder) {
@@ -39,14 +35,6 @@ public class TrackOrderResponse {
 		return failureMessages;
 	}
 
-	public TrackOrderResponse(@NotNull UUID orderTrackingId, @NotNull OrderStatus orderStatus,
-			@NotNull List<String> failureMessages) {
-		super();
-		this.orderTrackingId = orderTrackingId;
-		this.orderStatus = orderStatus;
-		this.failureMessages = failureMessages;
-	}
-
 	@Generated("SparkTools")
 	public static Builder builder() {
 		return new Builder();
@@ -61,17 +49,17 @@ public class TrackOrderResponse {
 		private Builder() {
 		}
 
-		public Builder withOrderTrackingId(UUID orderTrackingId) {
+		public Builder orderTrackingId(UUID orderTrackingId) {
 			this.orderTrackingId = orderTrackingId;
 			return this;
 		}
 
-		public Builder withOrderStatus(OrderStatus orderStatus) {
+		public Builder orderStatus(OrderStatus orderStatus) {
 			this.orderStatus = orderStatus;
 			return this;
 		}
 
-		public Builder withFailureMessages(List<String> failureMessages) {
+		public Builder failureMessages(List<String> failureMessages) {
 			this.failureMessages = failureMessages;
 			return this;
 		}

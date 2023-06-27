@@ -41,20 +41,6 @@ public class OrderItemEntity {
 		this.subTotal = builder.subTotal;
 	}
 
-	public OrderItemEntity() {
-	}
-
-	public OrderItemEntity(Long id, OrderEntity order, UUID productId, BigDecimal price, Integer quantity,
-			BigDecimal subTotal) {
-		super();
-		this.id = id;
-		this.order = order;
-		this.productId = productId;
-		this.price = price;
-		this.quantity = quantity;
-		this.subTotal = subTotal;
-	}
-
 	public Long getId() {
 		return id;
 	}
@@ -143,32 +129,32 @@ public class OrderItemEntity {
 		private Builder() {
 		}
 
-		public Builder Id(Long id) {
+		public Builder id(Long id) {
 			this.id = id;
 			return this;
 		}
 
-		public Builder Order(OrderEntity order) {
+		public Builder order(OrderEntity order) {
 			this.order = order;
 			return this;
 		}
 
-		public Builder ProductId(UUID productId) {
+		public Builder productId(UUID productId) {
 			this.productId = productId;
 			return this;
 		}
 
-		public Builder Price(BigDecimal price) {
+		public Builder price(BigDecimal price) {
 			this.price = price;
 			return this;
 		}
 
-		public Builder Quantity(Integer quantity) {
+		public Builder quantity(Integer quantity) {
 			this.quantity = quantity;
 			return this;
 		}
 
-		public Builder SubTotal(BigDecimal subTotal) {
+		public Builder subTotal(BigDecimal subTotal) {
 			this.subTotal = subTotal;
 			return this;
 		}

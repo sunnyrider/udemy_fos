@@ -7,8 +7,6 @@ import org.springframework.validation.annotation.Validated;
 
 import com.food.ordering.system.order.service.domain.dto.message.PaymentResponse;
 import com.food.ordering.system.order.service.domain.entity.Order;
-import com.food.ordering.system.order.service.domain.event.OrderCancelledEvent;
-import com.food.ordering.system.order.service.domain.event.OrderPaidEvent;
 import com.food.ordering.system.order.service.domain.ports.input.message.listener.payment.PaymentResponseMessageListener;
 
 @Validated
@@ -23,9 +21,9 @@ public class PaymentResponseMessageListenerImpl implements PaymentResponseMessag
 
 	@Override
 	public void paymentCompleted(PaymentResponse paymentResponse) {
-		OrderPaidEvent event = orderPaymentSaga.process(paymentResponse);
+		orderPaymentSaga.process(paymentResponse);
 		LOGGER.info("Publishing OrderPaidEvent for order id : {}", paymentResponse.getOrderId());
-		event.fire();
+//		event.fire();
 	}
 
 	@Override

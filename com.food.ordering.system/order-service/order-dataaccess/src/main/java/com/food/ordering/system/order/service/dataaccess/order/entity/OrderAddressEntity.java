@@ -15,52 +15,6 @@ import javax.persistence.Table;
 @Entity
 public class OrderAddressEntity {
 
-	@Generated("SparkTools")
-	public static final class Builder {
-		private UUID id;
-		private OrderEntity order;
-		private String street;
-		private String postalCode;
-		private String city;
-
-		private Builder() {
-		}
-
-		public OrderAddressEntity build() {
-			return new OrderAddressEntity(this);
-		}
-
-		public Builder City(String city) {
-			this.city = city;
-			return this;
-		}
-
-		public Builder Id(UUID id) {
-			this.id = id;
-			return this;
-		}
-
-		public Builder Order(OrderEntity order) {
-			this.order = order;
-			return this;
-		}
-
-		public Builder PostalCode(String postalCode) {
-			this.postalCode = postalCode;
-			return this;
-		}
-
-		public Builder Street(String street) {
-			this.street = street;
-			return this;
-		}
-	}
-
-	@Generated("SparkTools")
-	public static Builder builder() {
-		return new Builder();
-	}
-
 	@Id
 	private UUID id;
 	@OneToOne(cascade = CascadeType.ALL)
@@ -73,9 +27,6 @@ public class OrderAddressEntity {
 
 	private String city;
 
-	public OrderAddressEntity() {
-	}
-
 	@Generated("SparkTools")
 	private OrderAddressEntity(Builder builder) {
 		this.id = builder.id;
@@ -85,12 +36,7 @@ public class OrderAddressEntity {
 		this.city = builder.city;
 	}
 
-	public OrderAddressEntity(UUID id, OrderEntity order, String street, String postalCode, String city) {
-		this.id = id;
-		this.order = order;
-		this.street = street;
-		this.postalCode = postalCode;
-		this.city = city;
+	public OrderAddressEntity() {
 	}
 
 	@Override
@@ -151,5 +97,51 @@ public class OrderAddressEntity {
 	public String toString() {
 		return "OrderAddressEntity [id=" + id + ", order=" + order + ", street=" + street + ", postalCode=" + postalCode
 				+ ", city=" + city + "]";
+	}
+
+	@Generated("SparkTools")
+	public static Builder builder() {
+		return new Builder();
+	}
+
+	@Generated("SparkTools")
+	public static final class Builder {
+		private UUID id;
+		private OrderEntity order;
+		private String street;
+		private String postalCode;
+		private String city;
+
+		private Builder() {
+		}
+
+		public Builder id(UUID id) {
+			this.id = id;
+			return this;
+		}
+
+		public Builder order(OrderEntity order) {
+			this.order = order;
+			return this;
+		}
+
+		public Builder street(String street) {
+			this.street = street;
+			return this;
+		}
+
+		public Builder postalCode(String postalCode) {
+			this.postalCode = postalCode;
+			return this;
+		}
+
+		public Builder city(String city) {
+			this.city = city;
+			return this;
+		}
+
+		public OrderAddressEntity build() {
+			return new OrderAddressEntity(this);
+		}
 	}
 }

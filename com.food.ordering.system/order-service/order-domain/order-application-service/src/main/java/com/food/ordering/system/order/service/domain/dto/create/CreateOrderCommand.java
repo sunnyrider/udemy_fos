@@ -25,7 +25,6 @@ public class CreateOrderCommand {
 	@NotNull
 	private final OrderAddress address;
 
-
 	@Generated("SparkTools")
 	private CreateOrderCommand(Builder builder) {
 		this.customerId = builder.customerId;
@@ -35,16 +34,6 @@ public class CreateOrderCommand {
 		this.address = builder.address;
 	}
 
-
-	public CreateOrderCommand(@NotNull UUID customerId, @NotNull UUID restaurantId, @NotNull BigDecimal price,
-			@NotNull List<OrderItem> items, @NotNull OrderAddress address) {
-		super();
-		this.customerId = customerId;
-		this.restaurantId = restaurantId;
-		this.price = price;
-		this.items = items;
-		this.address = address;
-	}
 	public OrderAddress getAddress() {
 		return address;
 	}
@@ -61,10 +50,12 @@ public class CreateOrderCommand {
 	public UUID getRestaurantId() {
 		return restaurantId;
 	}
+
 	@Generated("SparkTools")
 	public static Builder builder() {
 		return new Builder();
 	}
+
 	@Generated("SparkTools")
 	public static final class Builder {
 		private UUID customerId;
@@ -76,27 +67,27 @@ public class CreateOrderCommand {
 		private Builder() {
 		}
 
-		public Builder withCustomerId(UUID customerId) {
+		public Builder customerId(UUID customerId) {
 			this.customerId = customerId;
 			return this;
 		}
 
-		public Builder withRestaurantId(UUID restaurantId) {
+		public Builder restaurantId(UUID restaurantId) {
 			this.restaurantId = restaurantId;
 			return this;
 		}
 
-		public Builder withPrice(BigDecimal price) {
+		public Builder price(BigDecimal price) {
 			this.price = price;
 			return this;
 		}
 
-		public Builder withItems(List<OrderItem> items) {
+		public Builder items(List<OrderItem> items) {
 			this.items = items;
 			return this;
 		}
 
-		public Builder withAddress(OrderAddress address) {
+		public Builder address(OrderAddress address) {
 			this.address = address;
 			return this;
 		}

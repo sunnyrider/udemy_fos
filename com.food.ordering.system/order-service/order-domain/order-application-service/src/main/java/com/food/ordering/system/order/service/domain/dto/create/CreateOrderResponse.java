@@ -8,15 +8,12 @@ import javax.validation.constraints.NotNull;
 import com.food.ordering.system.domain.valueobject.OrderStatus;
 
 public class CreateOrderResponse {
-
-	@NotNull
-	private final UUID orderTrackingId;
-
-	@NotNull
-	private final OrderStatus orderStatus;
-
-	@NotNull
-	private final String message;
+    @NotNull
+    private final UUID orderTrackingId;
+    @NotNull
+    private final OrderStatus orderStatus;
+    @NotNull
+    private final String message;
 
 	@Generated("SparkTools")
 	private CreateOrderResponse(Builder builder) {
@@ -25,24 +22,16 @@ public class CreateOrderResponse {
 		this.message = builder.message;
 	}
 
-	public CreateOrderResponse(@NotNull UUID orderTrackingId, @NotNull OrderStatus orderStatus,
-			@NotNull String message) {
-		super();
-		this.orderTrackingId = orderTrackingId;
-		this.orderStatus = orderStatus;
-		this.message = message;
-	}
-
-	public String getMessage() {
-		return message;
+	public UUID getOrderTrackingId() {
+		return orderTrackingId;
 	}
 
 	public OrderStatus getOrderStatus() {
 		return orderStatus;
 	}
 
-	public UUID getOrderTrackingId() {
-		return orderTrackingId;
+	public String getMessage() {
+		return message;
 	}
 
 	@Generated("SparkTools")
@@ -59,17 +48,17 @@ public class CreateOrderResponse {
 		private Builder() {
 		}
 
-		public Builder withOrderTrackingId(UUID orderTrackingId) {
+		public Builder orderTrackingId(UUID orderTrackingId) {
 			this.orderTrackingId = orderTrackingId;
 			return this;
 		}
 
-		public Builder withOrderStatus(OrderStatus orderStatus) {
+		public Builder orderStatus(OrderStatus orderStatus) {
 			this.orderStatus = orderStatus;
 			return this;
 		}
 
-		public Builder withMessage(String message) {
+		public Builder message(String message) {
 			this.message = message;
 			return this;
 		}

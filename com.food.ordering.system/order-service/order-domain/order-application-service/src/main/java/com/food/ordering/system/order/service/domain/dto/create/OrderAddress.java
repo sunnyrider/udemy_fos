@@ -25,13 +25,6 @@ public class OrderAddress {
 		this.city = builder.city;
 	}
 
-	public OrderAddress(@NotNull String street, @NotNull String postalCode, @NotNull String city) {
-		super();
-		this.street = street;
-		this.postalCode = postalCode;
-		this.city = city;
-	}
-
 	public String getCity() {
 		return city;
 	}
@@ -58,17 +51,17 @@ public class OrderAddress {
 		private Builder() {
 		}
 
-		public Builder withStreet(String street) {
+		public Builder street(String street) {
 			this.street = street;
 			return this;
 		}
 
-		public Builder withPostalCode(String postalCode) {
+		public Builder postalCode(String postalCode) {
 			this.postalCode = postalCode;
 			return this;
 		}
 
-		public Builder withCity(String city) {
+		public Builder city(String city) {
 			this.city = city;
 			return this;
 		}

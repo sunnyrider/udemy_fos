@@ -7,9 +7,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.food.ordering.system.domain.valueobject.OrderId;
+import com.food.ordering.system.domain.valueobject.OrderStatus;
 import com.food.ordering.system.order.service.domain.entity.Order;
 import com.food.ordering.system.order.service.domain.exception.OrderNotFoundException;
 import com.food.ordering.system.order.service.domain.ports.output.repository.OrderRepository;
+import com.food.ordering.system.saga.SagaStatus;
 
 public class OrderSagaHelper {
 	private static final Logger LOGGER = LoggerFactory.getLogger(OrderSagaHelper.class);
@@ -31,5 +33,20 @@ public class OrderSagaHelper {
 
 	void saveOrder(Order order) {
 		orderRepository.save(order);
+	}
+
+	SagaStatus orderStatusToSagaStatus(OrderStatus status) {
+		switch (status) {
+		case PAID:
+			return SagaStatus.PROCESSING;
+		case APPROVED:
+			return SagaStatus.SUCCEEDED;
+		case CANCELLING:
+			return SagaStatus.COMPENSATING;
+		case CANCELLED:
+			return SagaStatus.COMPENSATED;
+		default:
+			return SagaStatus.STARTED;
+		}
 	}
 }

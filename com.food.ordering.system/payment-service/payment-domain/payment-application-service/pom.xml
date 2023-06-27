@@ -12,6 +12,14 @@
 	<artifactId>payment-application-service</artifactId>
 
     <dependencies>
+		<dependency>
+			<groupId>com.food.ordering.system</groupId>
+			<artifactId>outbox</artifactId>
+		</dependency>
+        <dependency>
+            <groupId>com.food.ordering.system</groupId>
+            <artifactId>saga</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.food.ordering.system</groupId>
             <artifactId>payment-domain-core</artifactId>

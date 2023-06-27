@@ -16,8 +16,6 @@ import com.food.ordering.system.restaurant.service.domain.entity.Restaurant;
 import com.food.ordering.system.restaurant.service.domain.event.OrderApprovalEvent;
 import com.food.ordering.system.restaurant.service.domain.exception.RestaurantNotFoundException;
 import com.food.ordering.system.restaurant.service.domain.mapper.RestaurantDataMapper;
-import com.food.ordering.system.restaurant.service.domain.ports.output.message.publisher.OrderApprovedMessagePublisher;
-import com.food.ordering.system.restaurant.service.domain.ports.output.message.publisher.OrderRejectedMessagePublisher;
 import com.food.ordering.system.restaurant.service.domain.ports.output.repository.OrderApprovalRepository;
 import com.food.ordering.system.restaurant.service.domain.ports.output.repository.RestaurantRepository;
 
@@ -30,21 +28,15 @@ public class RestaurantApprovalRequestHelper {
 	private final RestaurantDataMapper restaurantDataMapper;
 	private final RestaurantRepository restaurantRepository;
 	private final OrderApprovalRepository orderApprovalRepository;
-	private final OrderApprovedMessagePublisher orderApprovalMessagePublisher;
-	private final OrderRejectedMessagePublisher orderRejectedMessagePublisher;
 
 	public RestaurantApprovalRequestHelper(RestaurantDomainService restaurantDomainService,
 			RestaurantDataMapper restaurantDataMapper, 
 			RestaurantRepository restaurantRepository,
-			OrderApprovalRepository orderApprovalRepository, 
-			OrderRejectedMessagePublisher orderRejectedMessagePublisher, 
-			OrderApprovedMessagePublisher orderApprovalMessagePublisher) {
+			OrderApprovalRepository orderApprovalRepository) {
 		this.restaurantDomainService = restaurantDomainService;
 		this.restaurantDataMapper = restaurantDataMapper;
 		this.restaurantRepository = restaurantRepository;
 		this.orderApprovalRepository = orderApprovalRepository;
-		this.orderApprovalMessagePublisher = orderApprovalMessagePublisher;
-		this.orderRejectedMessagePublisher = orderRejectedMessagePublisher;
 	}
 
 	@Transactional
@@ -62,9 +54,7 @@ public class RestaurantApprovalRequestHelper {
 		OrderApprovalEvent orderApprovalEvent = restaurantDomainService
 				.validateOrder(
 						restaurant, 
-						failureMessages, 
-						orderApprovalMessagePublisher, 
-						orderRejectedMessagePublisher);
+						failureMessages);
 
 		orderApprovalRepository.save(restaurant.getOrderApproval());
 		return orderApprovalEvent;

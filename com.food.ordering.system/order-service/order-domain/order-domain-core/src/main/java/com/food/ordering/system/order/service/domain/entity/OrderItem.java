@@ -8,96 +8,93 @@ import com.food.ordering.system.domain.valueobject.OrderId;
 import com.food.ordering.system.order.service.domain.valueobject.OrderItemId;
 
 public class OrderItem extends BaseEntity<OrderItemId> {
+    private OrderId orderId;
+    private final Product product;
+    private final int quantity;
+    private final Money price;
+    private final Money subTotal;
 
-	private OrderId orderId;
-	private final Product product;
-	private final int quantity;
-	private final Money price;
-	private final Money subTotal;
+    void initializeOrderItem(OrderId orderId, OrderItemId orderItemId) {
+        this.orderId = orderId;
+        super.setId(orderItemId);
+    }
 
-	void initializeOrderItem(OrderId oId, OrderItemId itemId) {
-		orderId = oId;
-		super.setId(itemId);
-	}
+    boolean isPriceValid() {
+        return price.isGreaterThanZero() &&
+                price.equals(product.getPrice()) &&
+                price.multiply(quantity).equals(subTotal);
+    }
 
-	boolean isPriceValid() {
-		return price.isGreaterThanZero() &&
-				price.equals(product.getPrice()) &&
-				price.multipy(quantity).equals(subTotal);
-	}
+    private OrderItem(Builder builder) {
+        super.setId(builder.orderItemId);
+        product = builder.product;
+        quantity = builder.quantity;
+        price = builder.price;
+        subTotal = builder.subTotal;
+    }
 
-	@Generated("SparkTools")
-	private OrderItem(Builder builder) {
-		super.setId(builder.orderItemId);
-		this.product = builder.product;
-		this.quantity = builder.quantity;
-		this.price = builder.price;
-		this.subTotal = builder.subTotal;
-	}
+    public static Builder builder() {
+        return new Builder();
+    }
 
-	public OrderId getOrderId() {
-		return orderId;
-	}
-	public void setOrderId(OrderId orderId) {
-		this.orderId = orderId;
-	}
-	public Product getProduct() {
-		return product;
-	}
-	public int getQuantity() {
-		return quantity;
-	}
-	public Money getPrice() {
-		return price;
-	}
-	public Money getSubTotal() {
-		return subTotal;
-	}
 
-	@Generated("SparkTools")
-	public static Builder builder() {
-		return new Builder();
-	}
+    public OrderId getOrderId() {
+        return orderId;
+    }
 
-	@Generated("SparkTools")
-	public static final class Builder {
-		private OrderItemId orderItemId;
-		private Product product;
-		private int quantity;
-		private Money price;
-		private Money subTotal;
+    public Product getProduct() {
+        return product;
+    }
 
-		private Builder() {
-		}
+    public int getQuantity() {
+        return quantity;
+    }
 
-		public Builder withOrderItemId(OrderItemId id) {
-			orderItemId = id;
-			return this;
-		}
+    public Money getPrice() {
+        return price;
+    }
 
-		public Builder withProduct(Product product) {
-			this.product = product;
-			return this;
-		}
+    public Money getSubTotal() {
+        return subTotal;
+    }
 
-		public Builder withQuantity(int quantity) {
-			this.quantity = quantity;
-			return this;
-		}
+    public static final class Builder {
+        private OrderItemId orderItemId;
+        private Product product;
+        private int quantity;
+        private Money price;
+        private Money subTotal;
 
-		public Builder withPrice(Money price) {
-			this.price = price;
-			return this;
-		}
+        private Builder() {
+        }
 
-		public Builder withSubTotal(Money subTotal) {
-			this.subTotal = subTotal;
-			return this;
-		}
+        public Builder orderItemId(OrderItemId val) {
+            orderItemId = val;
+            return this;
+        }
 
-		public OrderItem build() {
-			return new OrderItem(this);
-		}
-	}
+        public Builder product(Product val) {
+            product = val;
+            return this;
+        }
 
+        public Builder quantity(int val) {
+            quantity = val;
+            return this;
+        }
+
+        public Builder price(Money val) {
+            price = val;
+            return this;
+        }
+
+        public Builder subTotal(Money val) {
+            subTotal = val;
+            return this;
+        }
+
+        public OrderItem build() {
+            return new OrderItem(this);
+        }
+    }
 }

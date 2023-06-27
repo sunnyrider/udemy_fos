@@ -34,20 +34,6 @@ public class PaymentResponse {
 		this.failureMessages = builder.failureMessages;
 	}
 
-	public PaymentResponse(String id, String sagaId, String orderId, String paymentId, String customerId,
-			BigDecimal price, Instant createdAt, PaymentStatus paymentStatus, List<String> failureMessages) {
-		super();
-		this.id = id;
-		this.sagaId = sagaId;
-		this.orderId = orderId;
-		this.paymentId = paymentId;
-		this.customerId = customerId;
-		this.price = price;
-		this.createdAt = createdAt;
-		this.paymentStatus = paymentStatus;
-		this.failureMessages = failureMessages;
-	}
-
 	public Instant getCreatedAt() {
 		return createdAt;
 	}
@@ -95,47 +81,47 @@ public class PaymentResponse {
 		private Builder() {
 		}
 
-		public Builder withId(String id) {
+		public Builder id(String id) {
 			this.id = id;
 			return this;
 		}
 
-		public Builder withSagaId(String sagaId) {
+		public Builder sagaId(String sagaId) {
 			this.sagaId = sagaId;
 			return this;
 		}
 
-		public Builder withOrderId(String orderId) {
+		public Builder orderId(String orderId) {
 			this.orderId = orderId;
 			return this;
 		}
 
-		public Builder withPaymentId(String paymentId) {
+		public Builder paymentId(String paymentId) {
 			this.paymentId = paymentId;
 			return this;
 		}
 
-		public Builder withCustomerId(String customerId) {
+		public Builder customerId(String customerId) {
 			this.customerId = customerId;
 			return this;
 		}
 
-		public Builder withPrice(BigDecimal price) {
+		public Builder price(BigDecimal price) {
 			this.price = price;
 			return this;
 		}
 
-		public Builder withCreatedAt(Instant createdAt) {
+		public Builder createdAt(Instant createdAt) {
 			this.createdAt = createdAt;
 			return this;
 		}
 
-		public Builder withPaymentStatus(PaymentStatus paymentStatus) {
+		public Builder paymentStatus(PaymentStatus paymentStatus) {
 			this.paymentStatus = paymentStatus;
 			return this;
 		}
 
-		public Builder withFailureMessages(List<String> failureMessages) {
+		public Builder failureMessages(List<String> failureMessages) {
 			this.failureMessages = failureMessages;
 			return this;
 		}
