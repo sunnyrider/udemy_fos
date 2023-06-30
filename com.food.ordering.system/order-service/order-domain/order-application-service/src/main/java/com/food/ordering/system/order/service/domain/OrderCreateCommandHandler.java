@@ -40,8 +40,8 @@ public class OrderCreateCommandHandler {
         CreateOrderResponse createOrderResponse = orderDataMapper.orderToCreateOrderResponse(orderCreatedEvent.getOrder(),
                 "Order created successfully");
 
-        paymentOutboxHelper.savePaymentOutboxMessage(orderDataMapper
-                .orderCreatedEventToOrderPaymentEventPayload(orderCreatedEvent),
+        paymentOutboxHelper.savePaymentOutboxMessage(
+        		orderDataMapper.orderCreatedEventToOrderPaymentEventPayload(orderCreatedEvent),
                 orderCreatedEvent.getOrder().getOrderStatus(),
                 orderSagaHelper.orderStatusToSagaStatus(orderCreatedEvent.getOrder().getOrderStatus()),
                 OutboxStatus.STARTED,

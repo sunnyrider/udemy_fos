@@ -30,16 +30,14 @@ public class PaymentOutboxRepositoryImpl implements PaymentOutboxRepository {
 
     @Override
     public OrderPaymentOutboxMessage save(OrderPaymentOutboxMessage orderPaymentOutboxMessage) {
-        return paymentOutboxDataAccessMapper
-                .paymentOutboxEntityToOrderPaymentOutboxMessage(paymentOutboxJpaRepository
-                        .save(paymentOutboxDataAccessMapper
-                                .orderPaymentOutboxMessageToOutboxEntity(orderPaymentOutboxMessage)));
+        return paymentOutboxDataAccessMapper.paymentOutboxEntityToOrderPaymentOutboxMessage(
+                paymentOutboxJpaRepository.save(paymentOutboxDataAccessMapper
+                		.orderPaymentOutboxMessageToOutboxEntity(orderPaymentOutboxMessage)));
     }
 
     @Override
-    public Optional<List<OrderPaymentOutboxMessage>> findByTypeAndOutboxStatusAndSagaStatus(String sagaType,
-                                                                                            OutboxStatus outboxStatus,
-                                                                                            SagaStatus... sagaStatus) {
+    public Optional<List<OrderPaymentOutboxMessage>> findByTypeAndOutboxStatusAndSagaStatus(
+    		String sagaType, OutboxStatus outboxStatus, SagaStatus... sagaStatus) {
         return Optional.of(paymentOutboxJpaRepository.findByTypeAndOutboxStatusAndSagaStatusIn(sagaType,
                         outboxStatus,
                         Arrays.asList(sagaStatus))
