@@ -13,6 +13,7 @@ import javax.persistence.Table;
 import javax.persistence.Version;
 
 import com.food.ordering.system.domain.valueobject.PaymentStatus;
+import com.food.ordering.system.outbox.OutboxStatus;
 
 //@Getter
 //@Setter
@@ -30,7 +31,8 @@ public class OrderOutboxEntity {
     private ZonedDateTime processedAt;
     private String type;
     private String payload;
-
+    @Enumerated(EnumType.STRING)
+    private OutboxStatus outboxStatus;
     @Enumerated(EnumType.STRING)
     private PaymentStatus paymentStatus;
     @Version
@@ -44,26 +46,13 @@ public class OrderOutboxEntity {
 		this.processedAt = builder.processedAt;
 		this.type = builder.type;
 		this.payload = builder.payload;
-
+		this.outboxStatus = builder.outboxStatus;
 		this.paymentStatus = builder.paymentStatus;
 		this.version = builder.version;
 	}
 
     public OrderOutboxEntity() {
     }
-
-    public OrderOutboxEntity(UUID id, UUID sagaId, ZonedDateTime createdAt, ZonedDateTime processedAt, String type,
-			String payload, PaymentStatus paymentStatus, int version) {
-		this.id = id;
-		this.sagaId = sagaId;
-		this.createdAt = createdAt;
-		this.processedAt = processedAt;
-		this.type = type;
-		this.payload = payload;
-
-		this.paymentStatus = paymentStatus;
-		this.version = version;
-	}
 
 	public UUID getId() {
 		return id;
@@ -113,6 +102,13 @@ public class OrderOutboxEntity {
 		this.payload = payload;
 	}
 
+	public OutboxStatus getOutboxStatus() {
+		return outboxStatus;
+	}
+
+	public void setOutboxStatus(OutboxStatus outboxStatus) {
+		this.outboxStatus = outboxStatus;
+	}
 
 	public PaymentStatus getPaymentStatus() {
 		return paymentStatus;
@@ -156,6 +152,7 @@ public class OrderOutboxEntity {
 		private ZonedDateTime processedAt;
 		private String type;
 		private String payload;
+		private OutboxStatus outboxStatus;
 		private PaymentStatus paymentStatus;
 		private int version;
 
@@ -192,6 +189,11 @@ public class OrderOutboxEntity {
 			return this;
 		}
 
+		public Builder outboxStatus(OutboxStatus outboxStatus) {
+			this.outboxStatus = outboxStatus;
+			return this;
+		}
+
 		public Builder paymentStatus(PaymentStatus paymentStatus) {
 			this.paymentStatus = paymentStatus;
 			return this;
@@ -207,4 +209,3 @@ public class OrderOutboxEntity {
 		}
 	}
 }
-

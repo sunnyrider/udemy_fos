@@ -8,6 +8,15 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConfigurationProperties(prefix = "order-service")
 public class OrderServiceConfigData {
+	private String paymentRequestTopicName;
+	private String paymentResponseTopicName;
+
+	private String restaurantApprovalRequestTopicName;
+
+	private String restaurantApprovalResponseTopicName;
+
+	public OrderServiceConfigData() {
+	}
 
 	@Generated("SparkTools")
 	public static final class Builder {
@@ -46,15 +55,6 @@ public class OrderServiceConfigData {
 	@Generated("SparkTools")
 	public static Builder builder() {
 		return new Builder();
-	}
-	private String paymentRequestTopicName;
-	private String paymentResponseTopicName;
-
-	private String restaurantApprovalRequestTopicName;
-
-	private String restaurantApprovalResponseTopicName;
-
-	public OrderServiceConfigData() {
 	}
 
 	@Generated("SparkTools")

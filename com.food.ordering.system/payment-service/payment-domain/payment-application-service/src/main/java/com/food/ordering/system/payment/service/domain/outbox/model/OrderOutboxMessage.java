@@ -35,20 +35,6 @@ public class OrderOutboxMessage {
 		this.version = builder.version;
 	}
 
-    public OrderOutboxMessage(UUID id, UUID sagaId, ZonedDateTime createdAt, ZonedDateTime processedAt, String type,
-			String payload, PaymentStatus paymentStatus, OutboxStatus outboxStatus, int version) {
-		super();
-		this.id = id;
-		this.sagaId = sagaId;
-		this.createdAt = createdAt;
-		this.processedAt = processedAt;
-		this.type = type;
-		this.payload = payload;
-		this.paymentStatus = paymentStatus;
-		this.outboxStatus = outboxStatus;
-		this.version = version;
-	}
-
 	public void setOutboxStatus(OutboxStatus outboxStatus) {
         this.outboxStatus = outboxStatus;
     }

@@ -70,7 +70,5 @@ public class OrderPaymentEventKafkaPublisher implements PaymentRequestMessagePub
                            " to kafka with order id: {} and saga id: {}, error: {}",
                    orderPaymentEventPayload.getOrderId(), sagaId, e.getMessage());
         }
-
-
     }
 }
